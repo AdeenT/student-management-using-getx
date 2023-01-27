@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:student_managment_getx/model/data_model.dart';
 
@@ -9,8 +8,6 @@ class ScreenProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var encodedimg = data.img;
-    var imag = const Base64Decoder().convert(encodedimg);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -28,10 +25,6 @@ class ScreenProfile extends StatelessWidget {
             padding: const EdgeInsets.only(left: 30, right: 30, top: 100),
             child: Column(
               children: [
-                CircleAvatar(
-                  backgroundImage: MemoryImage(imag),
-                  radius: 60,
-                ),
                 const SizedBox(
                   height: 50,
                 ),
@@ -70,30 +63,10 @@ class ScreenProfile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Class : ',
+                      'Email : ',
                       style: TextStyle(fontSize: 25),
                     ),
-                    Text(data.std, style: const TextStyle(fontSize: 25)),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Parent Name : ',
-                      style: TextStyle(fontSize: 25),
-                    ),
-                    Text(data.parentName, style: const TextStyle(fontSize: 25)),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Place : ',
-                      style: TextStyle(fontSize: 25),
-                    ),
-                    Text(data.place, style: const TextStyle(fontSize: 25)),
+                    Text(data.email, style: const TextStyle(fontSize: 25)),
                   ],
                 ),
                 const SizedBox(

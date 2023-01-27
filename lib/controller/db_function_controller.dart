@@ -1,8 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:student_managment_getx/model/data_model.dart';
 
 class DbFunctionsController extends GetxController {
@@ -50,27 +47,11 @@ class DbFunctionsController extends GetxController {
           name: index.name,
           age: index.age,
           admissionNumber: index.admissionNumber,
-          std: index.std,
-          parentName: index.parentName,
-          place: index.place,
-          img: index.img,
+          email: index.email,
         );
         searchData.add(findings);
       }
     }
   }
 
-  String img = '';
-
-  pickimage() async {
-    final pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedImage == null) {
-      return;
-    } else {
-      update();
-      final bytes = File(pickedImage.path).readAsBytesSync();
-      img = base64Encode(bytes);
-    }
-  }
 }

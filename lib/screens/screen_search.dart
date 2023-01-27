@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student_managment_getx/controller/db_function_controller.dart';
-import 'package:student_managment_getx/views/screen_updater.dart';
+import 'package:student_managment_getx/screens/update_screen.dart';
 
 class ScreenSearch extends StatelessWidget {
   ScreenSearch({Key? key}) : super(key: key);
@@ -57,9 +57,6 @@ class ScreenSearch extends StatelessWidget {
                     child: ListView.separated(
                         itemBuilder: (context, index) {
                           var data = _controller.searchData[index];
-                          var encodedimg = data.img;
-                          var images =
-                              const Base64Decoder().convert(encodedimg);
                           if (data.name
                               .toLowerCase()
                               .contains(searchController.text.toLowerCase())) {
@@ -73,11 +70,13 @@ class ScreenSearch extends StatelessWidget {
                                     Get.to(ScreenProfile(data: data));
                                   },
                                   title: Text(data.name.toUpperCase()),
-                                  leading: Padding(
-                                    padding: const EdgeInsets.all(5),
+                                  leading: const Padding(
+                                    padding: EdgeInsets.all(5),
                                     child: CircleAvatar(
-                                        radius: 30,
-                                        backgroundImage: MemoryImage(images)),
+                                      radius: 30,
+                                      backgroundImage: NetworkImage(
+                                          "https://cdn-icons-png.flaticon.com/512/201/201818.png"),
+                                    ),
                                   ),
                                 ),
                               ),

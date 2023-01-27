@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student_managment_getx/controller/db_function_controller.dart';
-import 'package:student_managment_getx/views/screen_add.dart';
-import 'package:student_managment_getx/views/screen_editor.dart';
-import 'package:student_managment_getx/views/screen_search.dart';
-import 'package:student_managment_getx/views/screen_updater.dart';
+import 'package:student_managment_getx/screens/adding_screen.dart';
+import 'package:student_managment_getx/screens/screen_editor.dart';
+import 'package:student_managment_getx/screens/screen_search.dart';
+import 'package:student_managment_getx/screens/update_screen.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({Key? key}) : super(key: key);
@@ -21,9 +21,10 @@ class ScreenHome extends StatelessWidget {
             end: Alignment.bottomCenter),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color.fromARGB(255, 50, 50, 50),
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          centerTitle: true,
           title: const Text('Student List'),
           actions: [
             IconButton(
@@ -41,17 +42,16 @@ class ScreenHome extends StatelessWidget {
               return ListView.separated(
                   itemBuilder: (ctx, index) {
                     var data = controller.studentlistNotifier[index];
-                    var encodedimg = data.img;
-                    var images = const Base64Decoder().convert(encodedimg);
                     return Padding(
                       padding:
                           const EdgeInsets.only(top: 20, right: 8, left: 8),
                       child: Card(
                         color: const Color.fromARGB(255, 255, 226, 123),
                         child: ListTile(
-                          leading: CircleAvatar(
+                          leading: const CircleAvatar(
                             radius: 25,
-                            backgroundImage: MemoryImage(images),
+                            backgroundImage: NetworkImage(
+                                "https://cdn-icons-png.flaticon.com/512/201/201818.png"),
                           ),
                           title: Text(data.name.toUpperCase()),
                           subtitle: const Text('Click here to see profile'),
@@ -126,11 +126,11 @@ class ScreenHome extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 10, 230, 17),
           onPressed: () {
-            controller.img = '';
             Get.to(() => ScreenAdding());
           },
           child: const Icon(Icons.add),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }

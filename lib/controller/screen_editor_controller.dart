@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student_managment_getx/controller/db_function_controller.dart';
 import 'package:student_managment_getx/model/data_model.dart';
-import 'package:student_managment_getx/views/home_screen.dart';
+import 'package:student_managment_getx/screens/home_screen.dart';
 
 class EditingCotroller extends GetxController {
   final DbFunctionsController _controller = Get.put(DbFunctionsController());
@@ -11,16 +11,12 @@ class EditingCotroller extends GetxController {
       required String name,
       required String age,
       required String admn,
-      required String std,
-      required String parent,
-      required String place,
+      required String email,
       int? id}) async {
     if (name.isEmpty ||
         age.isEmpty ||
         admn.isEmpty ||
-        std.isEmpty ||
-        parent.isEmpty ||
-        place.isEmpty) {
+        email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Padding(
@@ -35,11 +31,8 @@ class EditingCotroller extends GetxController {
         name: name,
         age: age,
         admissionNumber: admn,
-        std: std,
-        parentName: parent,
-        place: place,
+        email: email,
         id: id,
-        img: _controller.img,
       );
       _controller.updateStudent(student);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

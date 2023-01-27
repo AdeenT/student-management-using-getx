@@ -12,22 +12,14 @@ class Studentmodel {
   @HiveField(3)
   final String admissionNumber;
   @HiveField(4)
-  final String std;
-  @HiveField(5)
-  final String parentName;
-  @HiveField(6)
-  final String place;
-  @HiveField(7)
-  String img;
+  final String email;
+  
 
   Studentmodel({
     required this.name,
     required this.age,
     required this.admissionNumber,
-    required this.std,
-    required this.parentName,
-    required this.place,
-    required this.img,
+    required this.email,
     this.id,
   });
 }

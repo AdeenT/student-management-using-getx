@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_managment_getx/controller/db_function_controller.dart';
 import 'package:student_managment_getx/model/data_model.dart';
-import 'package:student_managment_getx/views/home_screen.dart';
+import 'package:student_managment_getx/screens/home_screen.dart';
 
 void main(List<String> args) async {
   final DbFunctionsController controller = Get.put(DbFunctionsController());
