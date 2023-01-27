@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:student_managment_getx/controller/db_function_controller.dart';
 import 'package:student_managment_getx/controller/screen_home_controller.dart';
 import 'package:student_managment_getx/model/data_model.dart';
 
@@ -11,7 +9,6 @@ class ScreenAdding extends StatelessWidget {
   final _ageFromController = TextEditingController();
   final _adNoFromController = TextEditingController();
   final _emailFromController = TextEditingController();
-  final DbFunctionsController _controller = Get.put(DbFunctionsController());
   final HomeController homecontroller = Get.put(HomeController());
   ScreenAdding({Key? key, this.data}) : super(key: key);
 
@@ -46,7 +43,7 @@ class ScreenAdding extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       label: Text('Age'),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(),         
                     ),
                   ),
                 ),

@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student_managment_getx/controller/db_function_controller.dart';
 import 'package:student_managment_getx/screens/adding_screen.dart';
-import 'package:student_managment_getx/screens/screen_editor.dart';
-import 'package:student_managment_getx/screens/screen_search.dart';
-import 'package:student_managment_getx/screens/update_screen.dart';
+import 'package:student_managment_getx/screens/editing_screen.dart';
+import 'package:student_managment_getx/screens/search_screen.dart';
+import 'package:student_managment_getx/screens/profile_screen.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({Key? key}) : super(key: key);
@@ -53,7 +52,7 @@ class ScreenHome extends StatelessWidget {
                             backgroundImage: NetworkImage(
                                 "https://cdn-icons-png.flaticon.com/512/201/201818.png"),
                           ),
-                          title: Text(data.name.toUpperCase()),
+                          title: Text(data.name),
                           subtitle: const Text('Click here to see profile'),
                           trailing: Wrap(
                             children: [
@@ -76,12 +75,10 @@ class ScreenHome extends StatelessWidget {
                                         builder: (context) {
                                           return AlertDialog(
                                             title: const Text(
-                                              'Alert',
-                                              style:
-                                                  TextStyle(color: Colors.red),
+                                              'Delete',
                                             ),
                                             content: const Text(
-                                                'Are you sure you want to delete this profile'),
+                                                'Are you sure you want to delete this profile?'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () {
@@ -105,7 +102,7 @@ class ScreenHome extends StatelessWidget {
                                   },
                                   icon: const Icon(
                                     Icons.delete,
-                                    color: Colors.red,
+                                    color: Colors.grey,
                                   ))
                             ],
                           ),
@@ -124,7 +121,7 @@ class ScreenHome extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 10, 230, 17),
+          backgroundColor: const Color.fromARGB(255, 102, 236, 107),
           onPressed: () {
             Get.to(() => ScreenAdding());
           },

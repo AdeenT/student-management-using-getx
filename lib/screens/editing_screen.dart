@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:student_managment_getx/controller/db_function_controller.dart';
 import 'package:student_managment_getx/controller/screen_editor_controller.dart';
 import 'package:student_managment_getx/model/data_model.dart';
 
@@ -12,8 +10,7 @@ class ScreenEditing extends StatelessWidget {
   final _ageFromController = TextEditingController();
   final _adNoFromController = TextEditingController();
   final _emailFromController = TextEditingController();
-  final DbFunctionsController _controller = Get.put(DbFunctionsController());
-  final EditingCotroller _editingCotroller = Get.put(EditingCotroller());
+  final EditingCotroller _editingCotroller = Get.put(EditingCotroller(),);
   ScreenEditing({Key? key, this.data, this.editorClicked}) : super(key: key);
   @override
   Widget build(BuildContext context) {

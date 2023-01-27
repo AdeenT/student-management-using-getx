@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student_managment_getx/controller/db_function_controller.dart';
-import 'package:student_managment_getx/screens/update_screen.dart';
+import 'package:student_managment_getx/screens/profile_screen.dart';
 
 class ScreenSearch extends StatelessWidget {
   ScreenSearch({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class ScreenSearch extends StatelessWidget {
             end: Alignment.bottomCenter),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color.fromARGB(255, 50, 50, 50),
         appBar: AppBar(
           title: const Text('Search Students'),
         ),
@@ -69,7 +69,7 @@ class ScreenSearch extends StatelessWidget {
                                   onTap: () {
                                     Get.to(ScreenProfile(data: data));
                                   },
-                                  title: Text(data.name.toUpperCase()),
+                                  title: Text(data.name),
                                   leading: const Padding(
                                     padding: EdgeInsets.all(5),
                                     child: CircleAvatar(
