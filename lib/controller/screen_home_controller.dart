@@ -13,18 +13,12 @@ class HomeController extends GetxController {
     required String admn,
     required String email,
   }) async {
-    if (name.isEmpty ||
-        age.isEmpty ||
-        admn.isEmpty ||
-        email.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Padding(
-            padding: EdgeInsets.only(left: 50),
-            child: Text('Please fill all seven fields including image.'),
-          ),
-          backgroundColor: Colors.red,
-        ),
+    if (name.isEmpty || age.isEmpty || admn.isEmpty || email.isEmpty) {
+      Get.snackbar(
+        "Form's empty",
+        "Please fill the empty forms",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
       );
     } else {
       final student = Studentmodel(
@@ -34,13 +28,12 @@ class HomeController extends GetxController {
         email: email,
       );
       _controller.addStudent(student);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Padding(
-          padding: EdgeInsets.only(left: 90),
-          child: Text('Student added Succesfully.'),
-        ),
-        backgroundColor: Colors.greenAccent[400],
-      ));
+      Get.snackbar(
+        "Added",
+        "student's data added successfully",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color.fromARGB(255, 127, 220, 130),
+      );
       Get.to(const ScreenHome());
     }
   }

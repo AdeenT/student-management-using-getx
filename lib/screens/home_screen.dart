@@ -69,41 +69,41 @@ class ScreenHome extends StatelessWidget {
                                 ),
                               ),
                               IconButton(
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: const Text(
-                                              'Delete',
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: const Text(
+                                            'Delete',
+                                          ),
+                                          content: const Text(
+                                              'Are you sure you want to delete this profile?'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Get.offAll(const ScreenHome());
+                                              },
+                                              child: const Text('Cancel'),
                                             ),
-                                            content: const Text(
-                                                'Are you sure you want to delete this profile?'),
-                                            actions: [
-                                              TextButton(
+                                            TextButton(
                                                 onPressed: () {
-                                                  Get.offAll(
-                                                      const ScreenHome());
+                                                  if (data.id != null) {
+                                                    controller.deleteStudent(
+                                                        data.id!);
+                                                    Get.back();
+                                                  }
                                                 },
-                                                child: const Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                  onPressed: () {
-                                                    if (data.id != null) {
-                                                      controller.deleteStudent(
-                                                          data.id!);
-                                                      Get.back();
-                                                    }
-                                                  },
-                                                  child: const Text('Yes'))
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  icon: const Icon(
-                                    Icons.delete,
-                                    color: Colors.grey,
-                                  ))
+                                                child: const Text('Yes'))
+                                          ],
+                                        );
+                                      });
+                                },
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.grey,
+                                ),
+                              )
                             ],
                           ),
                           onTap: () {
